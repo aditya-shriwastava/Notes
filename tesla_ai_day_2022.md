@@ -28,7 +28,14 @@
   + **Gate:** Pattern of limb movement made during locomotion.
 
 
-[Desired Path] --> [Locomotion Planes] --> [References Tragectory]
+```mermaid
+flowchart LR
+  dp[Desired Path]
+  lp[Locomotion Planes]
+  rt[References Tragectory]
+
+	dp --> lp --> rt
+```
 
 ```mermaid
 flowchart LR
@@ -37,6 +44,33 @@ flowchart LR
 	rb[Real Behavior]
 	r[Reality]
 
-	se --> mc --> rb
-	rb --> r --> se
+	r --> se --> mc --> rb
 ```
+## Tesla FSD
+
+![Tesla FSD Architecture](./tesla_fsd_arch.png)
+
+**Planning:**
+- Car is not localized, but vector space is built around the car and planning(local plan) is done in that vector space.
+
+**Occupancy:**
+- Multicamera video neural network that from the images predict the full physical occupancy of the world around the robot.
+- Plus there future motion.
+- For every 3d location, it predicts the probabiility of whether it is occupied or not.
+- Video context.
+
+```mermaid
+flowchart LR
+	c[Raw Cameras Image]
+	rc(Rectified Camera Image)
+	on(Occupancy Network)
+	o[Occupancy]
+
+  c --> rc --> on --> o
+```
+
+**Auto labeling:**
+- High precision trajectory recovery by using visual inertial odometry.
+  * All features are infured from video by neural network.
+  * Then tracked and reconstructed in vector space.
+- Multi-Trip Reconstruction
