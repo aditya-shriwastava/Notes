@@ -74,3 +74,9 @@ flowchart LR
   * All features are infured from video by neural network.
   * Then tracked and reconstructed in vector space.
 - Multi-Trip Reconstruction
+
+**Simulation:**
+* Simulation generated with real world data.
+
+**DOJO:**
+* High speed connectivity.

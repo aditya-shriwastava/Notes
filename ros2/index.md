@@ -13,3 +13,4 @@
   * ROS_LOCALHOST_ONLY environment variable allows you to limit ROS 2 communication to localhost only.
 
 1. [ROS Graph](ros_graph.md)
+2. [Client libraries](client_libraries.md)
